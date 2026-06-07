@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  elasticsearch:  
+    build: ./elasticsearch
+    container_name: elasticsearch
+    environment:
+      - ELASTIC_PASSWORD=changeme
+    ports:
+      - "9200:9200"
+    volumes:
+      - ./elasticsearch/elasticsearch-data:/usr/share/elasticsearch/data
+    restart: unless-stopped
+
+  grafana:
+    build: ./grafana
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=grafana123
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/grafana-data:/var/lib/grafana
+    restart: unless-stopped
+  
