@@ -15,6 +15,7 @@ mkdir -p elasticsearch-data grafana-data
 # Set permissions
 sudo chown -R 1000:1000 elasticsearch-data
 sudo chown -R 472:472 grafana-data
+sudo chmod -R 755 ./grafana-data
 
 # Start the stack
 docker compose up -d
